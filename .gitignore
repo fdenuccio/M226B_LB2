@@ -4,6 +4,9 @@
 # Log file
 *.log
 
+# BlueJ cahce file
+*.ctxt
+
 # Package Files #
 *.jar
 *.war
