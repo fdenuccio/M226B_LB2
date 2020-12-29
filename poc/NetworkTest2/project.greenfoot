@@ -1,11 +1,11 @@
 #Greenfoot project file
 dependency1.from=MyWorld
-dependency1.to=Server
+dependency1.to=Client
 dependency1.type=UsesDependency
 editor.fx.0.height=739
-editor.fx.0.width=817
-editor.fx.0.x=98
-editor.fx.0.y=353
+editor.fx.0.width=816
+editor.fx.0.x=232
+editor.fx.0.y=208
 height=585
 package.numDependencies=1
 package.numTargets=3
@@ -47,5 +47,5 @@ target3.y=0
 version=3.0.0
 width=825
 world.lastInstantiated=MyWorld
-xPosition=660
-yPosition=494
+xPosition=1470
+yPosition=495

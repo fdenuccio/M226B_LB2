@@ -28,7 +28,7 @@ public class Server
     public void createSocket()
     {
         try{  
-            ServerSocket ss=new ServerSocket(7777);  
+            ServerSocket ss=new ServerSocket(6666);  
             Socket s=ss.accept();//establishes connection   
             DataInputStream dis=new DataInputStream(s.getInputStream());  
             String  str=(String)dis.readUTF();  
