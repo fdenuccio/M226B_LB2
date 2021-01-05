@@ -1,11 +1,14 @@
 #Greenfoot project file
 class.Kaestchen.image=Kaestchen\ (Custom).png
+dependency1.from=MyWorld
+dependency1.to=Kaestchen
+dependency1.type=UsesDependency
 editor.fx.0.height=735
 editor.fx.0.width=813
 editor.fx.0.x=343
 editor.fx.0.y=75
 height=973
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=2
 project.charset=UTF-8
 publish.hasSource=false
