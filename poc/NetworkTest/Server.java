@@ -3,13 +3,16 @@ import java.net.*;
 /**
  * Write a description of class Server here.
  * 
- * @author (your name) 
+ * @author Jenia Isler 
  * @version (a version number or a date)
  */
 public class Server  
 {
     // instance variables - replace the example below with your own
     private int x;
+    
+    public ServerSocket ss;
+    public DataInputStream dis;
 
     /**
      * Constructor for objects of class Server
@@ -18,6 +21,13 @@ public class Server
     {
         createSocket();
     }
+    
+    
+    public void act(){
+        
+        
+    }
+    
 
     /**
      * An example of a method - replace this comment with your own
@@ -35,7 +45,21 @@ public class Server
             System.out.println("message= "+str);  
             ss.close();  
         }catch(Exception e){System.out.println(e);}  
-    }  
+    }
+    
+    public String GetDataStream(){
+        
+        
+    };
+    
+    
+    public void closeSocket(ServerSocket ss)
+    {
+        ss.close();
+        
+    }
+    
+    
 }
 
 
