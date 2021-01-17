@@ -9,7 +9,7 @@ import java.net.Socket;
  * Write a description of class Server here.
  * 
  * @author Jenia Isler
- * @version 15.01.2021
+ * @version 16.01.2021
  */
 public class Server  
 {
@@ -21,6 +21,11 @@ public class Server
      */
     public Server()
     {
+    }
+    
+    public Server(boolean jsonObject){
+        
+        
     }
 
     /**
@@ -52,6 +57,40 @@ public class Server
         //
         listener.close();
 
+    }
+    
+    
+    public static String SocketGetJSON() throws IOException{
+        
+        System.out.println("[SERVER] Waiting for client connection on Port: " + SERVER_PORT + "...");
+        
+        ServerSocket listener = new ServerSocket(SERVER_PORT);
+
+        // TODO [Popup] Waiting for client connection
+        Socket client = listener.accept();
+        // TODO [Popup] Client connected
+
+
+        // for Buffer outgoing messages
+        PrintWriter out = new PrintWriter(client.getOutputStream(), true);
+
+        // for Buffer incoming messages
+        BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        
+        //get String form incoming buffer
+        String jsonString = in.readLine();
+        
+        // returns JSON Sting
+        
+
+        //close
+        out.close();
+        in.close();
+
+        //close listener
+        listener.close();
+        
+        return jsonString;
     }
 
 }

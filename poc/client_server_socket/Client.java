@@ -3,11 +3,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+
 /**
  * Write a description of class Client here.
  * 
  * @author Jenia Isler   
- * @version 15.01.2021
+ * @version 16.01.2021
  */
 public class Client  
 {

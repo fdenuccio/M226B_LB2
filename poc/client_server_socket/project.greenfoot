@@ -1,10 +1,13 @@
 #Greenfoot project file
-editor.fx.0.height=739
-editor.fx.0.width=816
-editor.fx.0.x=872
-editor.fx.0.y=220
-height=585
-package.numDependencies=0
+dependency1.from=MyWorld
+dependency1.to=Server
+dependency1.type=UsesDependency
+editor.fx.0.height=1200
+editor.fx.0.width=1222
+editor.fx.0.x=1361
+editor.fx.0.y=142
+height=548
+package.numDependencies=1
 package.numTargets=4
 project.charset=UTF-8
 publish.hasSource=false
@@ -51,5 +54,5 @@ target4.y=0
 version=3.0.0
 width=825
 world.lastInstantiated=MyWorld
-xPosition=605
-yPosition=522
+xPosition=357
+yPosition=574

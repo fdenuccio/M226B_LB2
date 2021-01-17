@@ -1,30 +1,61 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 /**
  * Write a description of class JsonHandler here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  Jenia Isler 
+ * @version 16.01.2021
  */
 public class JsonHandler  
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private static final String SERVER_IP = "turret_Options.json";
 
     /**
      * Constructor for objects of class JsonHandler
      */
     public JsonHandler()
     {
+        
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public static JSONObject getJsonFile() {
+      //Creating a JSONParser object
+      JSONParser jsonParser = new JSONParser();
+      try {
+         //Parsing the contents of the JSON file
+         JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("turret_Options.json"));
+         return jsonObject;
+      } catch (FileNotFoundException e) {
+           e.printStackTrace();
+           return null;
+      } catch (IOException e) {
+         e.printStackTrace();
+         return null;
+      } catch (ParseException e) {
+         e.printStackTrace();
+         return null;
+      } 
+      
+      
+    }
+    
+    
+    public static String JSONtoString(JSONObject json){
+        
+        return json.toString();
+        
+    }
+    
+    
+    public static int parseInt(Object value){
+       return Integer.parseInt(String.valueOf(value.toString()));
+    }
+    public static String parseString(Object value){
+       return String.valueOf(value.toString());
     }
 }
