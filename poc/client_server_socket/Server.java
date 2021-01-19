@@ -4,6 +4,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.InetSocketAddress;
+import java.net.InetAddress;
+import java.net.Inet4Address;
 
 /**
  * Write a description of class Server here.
@@ -15,6 +19,8 @@ public class Server
 {
     //deklarierter Server Port
     private static final int SERVER_PORT = 9000;
+    
+    public String Client_IP = null;
     
     /**
      * Constructor for objects of class Server
@@ -35,7 +41,7 @@ public class Server
      * @return     the sum of x and y 
      */
 
-    public void ServerSocket() throws IOException{
+    public static void ServerSocket() throws IOException{
         ServerSocket listener = new ServerSocket(SERVER_PORT);
 
         // TODO [Popup] Waiting for client connection
@@ -43,6 +49,18 @@ public class Server
         // TODO [Popup] Client connected
 
 
+        
+        
+        //get IPAdress of client
+        InetSocketAddress sockaddr = (InetSocketAddress)client.getRemoteSocketAddress();
+        InetAddress inaddr = sockaddr.getAddress();
+        Inet4Address in4addr = (Inet4Address)inaddr;
+        byte[] ip4bytes = in4addr.getAddress(); // returns byte[4]
+        String ip4string = in4addr.toString();
+        
+        System.out.println(ip4string);
+        
+        
         // for Buffer outgoing messages
         PrintWriter out = new PrintWriter(client.getOutputStream(), true);
 

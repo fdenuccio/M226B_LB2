@@ -22,7 +22,7 @@ public class Client
     {
     }
 
-    public void ServerSocket() throws IOException{
+    public static void ServerSocket() throws IOException{
         Socket socket = new Socket(SERVER_IP, SERVER_PORT);
         
         BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));

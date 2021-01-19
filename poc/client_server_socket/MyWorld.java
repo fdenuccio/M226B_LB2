@@ -41,7 +41,7 @@ public class MyWorld extends World
     public void startServer(){
         try{
             
-        Server.SocketGetJSON();
+        Server.ServerSocket()/*SocketGetJSON()*/;
     }  catch(Exception e){
         e.printStackTrace();
         System.out.println(e);
@@ -49,7 +49,13 @@ public class MyWorld extends World
     }
     
     public void startClient(){
-        
+        try{
+            
+        Client.ServerSocket();
+    }  catch(Exception e){
+        e.printStackTrace();
+        System.out.println(e);
+    }
     }
     
     
