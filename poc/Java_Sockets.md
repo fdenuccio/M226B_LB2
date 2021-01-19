@@ -20,3 +20,5 @@
 `BufferedReader receiver = new BufferedReader( new InputStreamReader( s.getInputStream() ) );` holt die gebufferten Daten
 
 `PrintWriter sender = new PrintWriter( s.getOutputStream(), true );` sendet Daten
+
+
