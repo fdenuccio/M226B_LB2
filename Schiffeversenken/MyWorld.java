@@ -22,6 +22,8 @@ public class MyWorld extends World
         feldLinks = new Kaestchen[10][10];
         feldRechts = new Kaestchen[10][10];
         prepare();
+        Knopf knopf1 = new Knopf();
+        addObject(knopf1,500,400);
     }
 
     /**
@@ -32,17 +34,34 @@ public class MyWorld extends World
     {
         for(int x=0; x <10; x++) {
             for(int y=0; y <10; y++) {
-                Kaestchen kaestchen = new Kaestchen(x,y);
+                Kaestchen kaestchen = new Kaestchen(x,y, true);
                 feldLinks[x][y] = kaestchen;
                 addObject(kaestchen,150+x*20,150+y*20);
             }
         }
         for(int x=0; x <10; x++) {
             for(int y=0; y <10; y++) {
-                Kaestchen kaestchen = new Kaestchen(x,y);
+                Kaestchen kaestchen = new Kaestchen(x,y, false);
                 feldRechts[x][y] = kaestchen;
                 addObject(kaestchen,400+x*20,150+y*20);
             }
         }
+        
+        // Boat 2 füllen
+        Boat boat2 = new Boat(2);
+        feldLinks[4][5].addToBoat(boat2);
+        feldLinks[4][6].addToBoat(boat2);
+        // Boat 3 füllen
+        Boat boat3 = new Boat(3);
+        feldLinks[6][7].addToBoat(boat3);
+        feldLinks[6][8].addToBoat(boat3);
+        feldLinks[6][9].addToBoat(boat3);
+        //Boat 4 füllen
+        Boat boat4 = new Boat(4);
+        feldLinks[2][2].addToBoat(boat4);
+        feldLinks[2][3].addToBoat(boat4);
+        
+        //Doppelschleife x yè
+        //feldLinks[x][z].getZustand   ---> Send to other
     }
 }

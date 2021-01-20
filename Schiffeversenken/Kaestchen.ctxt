@@ -1,9 +1,15 @@
 #BlueJ class context
 comment0.target=Kaestchen
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Kaestchen\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=x\ y
-comment1.target=Kaestchen(int,\ int)
+comment1.params=x\ y\ links
+comment1.target=Kaestchen(int,\ int,\ boolean)
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Kaestchen\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=3
+comment3.params=
+comment3.target=void\ fire()
+comment4.params=b
+comment4.target=void\ addToBoat(Boat)
+comment5.params=
+comment5.target=int\ getZustand()
+numComments=6
