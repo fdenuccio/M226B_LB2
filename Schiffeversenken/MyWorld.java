@@ -61,7 +61,7 @@ public class MyWorld extends World
         feldLinks[2][2].addToBoat(boat4);
         feldLinks[2][3].addToBoat(boat4);
         
-        //Doppelschleife x yè
-        //feldLinks[x][z].getZustand   ---> Send to other
+        //Doppelschleife x y;
+        //feldLinks[x][y].getZustand   ---> Send to other
     }
 }

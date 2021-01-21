@@ -9,13 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Boat extends Actor
 {
     private Kaestchen[] bootsteile;
-    private int groesse; // Grüsse des Boots (2,3,4)
-    private int index;   // Index zöhlt hoch beim hinzuf'gen der Teile
+    private int groesse; // Grösse des Boots (2,3,4)
+    private int index;   // Index zählt hoch beim hinzufügen der Teile
     
     public Boat(int groesse){
        this.groesse = groesse;
        bootsteile = new Kaestchen[groesse];
-       index = 0;   // Moch kein Teil zugefügt
+       index = 0;   // Noch kein Teil zugefügt
     }
    
     
@@ -37,7 +37,7 @@ public class Boat extends Actor
     }  
     
     public void addTeil(Kaestchen k) {
-       // Test of müglich
+       // Test of möglich
        bootsteile[index] = k;
        index++;
     }
