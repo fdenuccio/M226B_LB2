@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Write a description of class MyWorld here.
@@ -26,7 +28,16 @@ public class MyWorld extends World
             if(ActasServer()){
                 startServer();
             }else{
-                startClient();
+                
+                String response= null;
+                
+                do{
+                    
+                  response = Greenfoot.ask("Enter IP Address:");
+
+                } while(!checkIP(response));
+                
+                startClient(response);
             }
 
             first = false;
@@ -44,16 +55,31 @@ public class MyWorld extends World
         }
     }
 
-    public void startClient(){
+    public void startClient(String ip){
         try{
 
-            Client.ServerSocket();
+            Client.ServerSocket(ip);
         }  catch(Exception e){
             e.printStackTrace();
             System.out.println(e);
         }
     }
-
+    
+    private boolean checkIP(String ip){
+        
+        String regex = "\\A(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}\\z";
+        
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(ip);
+        
+        if(matcher.matches()) {
+            return true;
+         } else {
+            return false;
+         }
+  
+    }
     
     public boolean ActasServer(){
 

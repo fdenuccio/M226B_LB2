@@ -42,6 +42,8 @@ public class Server
      */
 
     public static void ServerSocket() throws IOException{
+        System.out.println("[SERVER] Waiting for client connection on Port: " + SERVER_PORT + "...");
+        
         ServerSocket listener = new ServerSocket(SERVER_PORT);
 
         // TODO [Popup] Waiting for client connection
@@ -49,16 +51,7 @@ public class Server
         // TODO [Popup] Client connected
 
 
-        
-        
-        //get IPAdress of client
-        InetSocketAddress sockaddr = (InetSocketAddress)client.getRemoteSocketAddress();
-        InetAddress inaddr = sockaddr.getAddress();
-        Inet4Address in4addr = (Inet4Address)inaddr;
-        byte[] ip4bytes = in4addr.getAddress(); // returns byte[4]
-        String ip4string = in4addr.toString();
-        
-        System.out.println(ip4string);
+        System.out.println("connected Client " + getIP(client));
         
         
         // for Buffer outgoing messages
@@ -66,6 +59,9 @@ public class Server
 
         // for Buffer incoming messages
         BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        
+        
+        System.out.println("Server response: " + in.readLine());
 
 
         //close
@@ -77,6 +73,21 @@ public class Server
 
     }
     
+    public static String getIP(Socket client)
+    {
+        
+        //get IPAdress of client
+        InetSocketAddress sockaddr = (InetSocketAddress)client.getRemoteSocketAddress();
+        InetAddress inaddr = sockaddr.getAddress();
+        Inet4Address in4addr = (Inet4Address)inaddr;
+        byte[] ip4bytes = in4addr.getAddress(); // returns byte[4]
+        String ip4string = in4addr.toString().replace("/","");
+        
+        return ip4string;
+        
+    }
+    
+
     
     public static String SocketGetJSON() throws IOException{
         
