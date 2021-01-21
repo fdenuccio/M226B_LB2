@@ -24,6 +24,12 @@ public class MyWorld extends World
         prepare();
         Knopf knopf1 = new Knopf();
         addObject(knopf1,500,400);
+        
+        Text text = new Text();
+        addObject(text, 400, 80);
+        
+        roundHandler rb = new roundHandler();
+        
     }
 
     /**
