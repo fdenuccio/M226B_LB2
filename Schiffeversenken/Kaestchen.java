@@ -15,7 +15,7 @@ public class Kaestchen extends Actor
     private int zustand; // Wasser, Schiff, Treffer, Versenkt
     private boolean links;
     
-    private GreenfootImage bilder[] = {new GreenfootImage("wasser (Custom).jpg"), new GreenfootImage("treffer (Custom).jpg"), new GreenfootImage("versenkt (Custom).jpg")};
+    private GreenfootImage bilder[] = {new GreenfootImage("wasser (Custom).jpg"),new GreenfootImage("Kaestchen (Custom).png"), new GreenfootImage("treffer (Custom).jpg"), new GreenfootImage("versenkt (Custom).jpg")};
     private Boat boat;
     
     public Kaestchen(int x, int y, boolean links){
