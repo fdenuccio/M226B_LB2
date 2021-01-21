@@ -15,6 +15,7 @@ public class Kaestchen extends Actor
     private int zustand; // Wasser, Schiff, Treffer, Versenkt
     private boolean links;
     
+    
     private GreenfootImage bilder[] = {new GreenfootImage("wasser (Custom).jpg"),new GreenfootImage("Kaestchen (Custom).png"), new GreenfootImage("treffer (Custom).jpg"), new GreenfootImage("versenkt (Custom).jpg")};
     private Boat boat;
     
@@ -38,13 +39,14 @@ public class Kaestchen extends Actor
        if (Greenfoot.mouseClicked(this)) {
            // check if rechts
             fire();
+           //setState(2);
         }
     }  
     
     private void fire() {
-        // Send to other x, Y 
-        // --: Rerurnwert wasser, treffer, versenkt
-        /*switch (result) {
+        //Send to other x, Y 
+        // --: Returnwert wasser,schiff, treffer, versenkt
+        switch (zustand){
             case 0: {
                 
                 zustand++;
@@ -64,10 +66,39 @@ public class Kaestchen extends Actor
                 break;
             }
             case 3: {
-                
+           
                 break;
             }
-         } */
+         } 
+    }
+    
+    public void setState( int state){
+      zustand = state;
+      
+      switch (zustand){
+        case 0: {
+                
+                
+                setImage(bilder[zustand]);
+                break;
+            }
+            case 1: {
+                
+
+                setImage(bilder[zustand]);
+                break;
+            }
+            case 2: {
+                
+
+                setImage(bilder[zustand]);
+                break;
+            }
+            case 3: {
+           
+                break;
+            }
+        }
     }
     
     public void addToBoat(Boat b) {
