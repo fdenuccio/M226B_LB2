@@ -45,4 +45,19 @@ public class Client
         
         socket.close();
     }
+    
+    
+    public static void sendSocket(String ip, String cords) throws IOException{
+        //connect to server with new Socket
+        Socket socket = new Socket(ip, SERVER_PORT);
+        System.out.println("Connected to Server (" + ip + ") on Port " + SERVER_PORT);
+        
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        
+        out.println(cords);
+        
+        socket.close();
+    }
+    
 }
