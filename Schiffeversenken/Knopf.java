@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class Knopf here.
@@ -97,11 +98,42 @@ public class Knopf extends Actor
         }
     }
 
-    private void bombCord(String cord){
-
+    public void bombCord(String cord){
+        chosenCords = cord;
     }
-
     
+    public void setreceivedCord(String cord){
+        
+        int x = Integer.parseInt(String.valueOf(cord.charAt(0)));
+        int y = Integer.parseInt(String.valueOf(cord.charAt(1)));
+        
+        System.out.println("received x cor" + x);
+        System.out.println("received y cor" + y);
+        
+        MyWorld world = (MyWorld) getWorld();
+        
+        List<Kaestchen> kaestchen = getWorld().getObjects(Kaestchen.class);
+        
+        for (Kaestchen kasten : kaestchen){
+            
+            if (kasten.x == x && kasten.y == y && kasten.links){
+                
+                kasten.setState(2);
+                
+            }
+            
+        }
+        
+        
+
+        
+        
+        
+        
+    }
+    
+    
+
     private void receiveCords(){
         try{
             receivedCord = Server.receiveSocket();
@@ -109,10 +141,10 @@ public class Knopf extends Actor
             e.printStackTrace();
             System.out.println(e);
         }
-        
+
         System.out.println(receivedCord);
-        
-        bombCord(receivedCord);
+
+        setreceivedCord(receivedCord);
 
     }
 
