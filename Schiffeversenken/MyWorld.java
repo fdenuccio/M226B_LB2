@@ -11,6 +11,9 @@ public class MyWorld extends World
     private Kaestchen[][] feldLinks;
     private Kaestchen[][] feldRechts;
     
+    
+    
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -24,8 +27,14 @@ public class MyWorld extends World
         prepare();
         Knopf knopf1 = new Knopf();
         addObject(knopf1,500,400);
+        
+        Text text = new Text();
+        addObject(text, 400, 80);
+        
+        roundHandler rb = new roundHandler();
+        
     }
-
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.

@@ -41,7 +41,7 @@ public class Server
      * @return     the sum of x and y 
      */
 
-    public static void ServerSocket() throws IOException{
+    public static String ServerSocket() throws IOException{
         System.out.println("[SERVER] Waiting for client connection on Port: " + SERVER_PORT + "...");
         
         ServerSocket listener = new ServerSocket(SERVER_PORT);
@@ -70,6 +70,45 @@ public class Server
 
         //
         listener.close();
+        
+        return getIP(client);
+
+    }
+    
+    public static String receiveSocket() throws IOException{
+        
+        String response;
+        
+        System.out.println("[SERVER] Waiting for client connection on Port: " + SERVER_PORT + "...");
+        
+        ServerSocket listener = new ServerSocket(SERVER_PORT);
+
+        // TODO [Popup] Waiting for client connection
+        Socket client = listener.accept();
+        // TODO [Popup] Client connected
+
+
+        System.out.println("connected Client " + getIP(client));
+        
+        
+        // for Buffer outgoing messages
+        PrintWriter out = new PrintWriter(client.getOutputStream(), true);
+
+        // for Buffer incoming messages
+        BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        
+        
+        response = in.readLine();
+
+
+        //close
+        out.close();
+        in.close();
+
+        //
+        listener.close();
+        
+        return response;
 
     }
     

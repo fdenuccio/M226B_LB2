@@ -11,14 +11,13 @@ public class Boat extends Actor
     private Kaestchen[] bootsteile;
     private int groesse; // Grösse des Boots (2,3,4)
     private int index;   // Index zählt hoch beim hinzufügen der Teile
-    
+
     public Boat(int groesse){
-       this.groesse = groesse;
-       bootsteile = new Kaestchen[groesse];
-       index = 0;   // Noch kein Teil zugefügt
+        this.groesse = groesse;
+        bootsteile = new Kaestchen[groesse];
+        index = 0;   // Noch kein Teil zugefügt
     }
-   
-    
+
     /**
      * Act - do whatever the Boat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -27,18 +26,18 @@ public class Boat extends Actor
     {
         // Add your action code here.
     } 
-    
+
     public int getIndex() {
-       return index;
+        return index;
     }
-    
-     public int getGroesse() {
-       return groesse;
+
+    public int getGroesse() {
+        return groesse;
     }  
-    
+
     public void addTeil(Kaestchen k) {
-       // Test of möglich
-       bootsteile[index] = k;
-       index++;
+        // Test of möglich
+        bootsteile[index] = k;
+        index++;
     }
 }

@@ -8,47 +8,62 @@ import java.util.*;
  */
 public class Kaestchen extends Actor
 {
-    
-    private int x;
-    private int y;
+
+    public int x;
+    public int y;
     private GreenfootImage img;
     private int zustand; // Wasser, Schiff, Treffer, Versenkt
-    private boolean links;
-    
-    
+    public boolean links;
+
+    private Knopf knopf;
+
     private GreenfootImage bilder[] = {new GreenfootImage("wasser (Custom).jpg"),new GreenfootImage("Kaestchen (Custom).png"), new GreenfootImage("treffer (Custom).jpg"), new GreenfootImage("versenkt (Custom).jpg")};
     private Boat boat;
-    
+
     public Kaestchen(int x, int y, boolean links){
-       this.x = x;
-       this.y = y;
-       this.links = links;
-       zustand = 0; //wasser
-       setImage(bilder[zustand]); // Image Wasser laden
-       boat = null;
-       
-       
+        this.x = x;
+        this.y = y;
+        this.links = links;
+        zustand = 0; //wasser
+        setImage(bilder[zustand]); // Image Wasser laden
+        boat = null;
+
     }
-    
+
     /**
      * Act - do whatever the Kaestchen wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-       if (Greenfoot.mouseClicked(this)) {
-           // check if rechts
-            fire();
-           //setState(2);
+
+        knopf = ((getWorld()).getObjects(Knopf.class)).get(0);
+
+        if (!links){
+            if (Greenfoot.mouseClicked(this)) {
+                // check if rechts
+                //fire();
+                
+                if (!links){
+                    knopf.lastkasten = this;
+                }
+                
+                setState(2);
+                
+                
+                
+                knopf.bombCord(getCords());
+                
+            }
         }
     }  
-    
+
     private void fire() {
         //Send to other x, Y 
         // --: Returnwert wasser,schiff, treffer, versenkt
         switch (zustand){
             case 0: {
-                
+
                 zustand++;
                 setImage(bilder[zustand]);
                 break;
@@ -66,50 +81,74 @@ public class Kaestchen extends Actor
                 break;
             }
             case 3: {
-           
+
                 break;
             }
-         } 
+        } 
     }
-    
+
     public void setState( int state){
-      zustand = state;
-      
-      switch (zustand){
-        case 0: {
-                
-                
-                setImage(bilder[zustand]);
+
+        switch (state){
+            case 0: {
+                zustand = state;
+                setImage(bilder[state]);
                 break;
             }
             case 1: {
-                
-
-                setImage(bilder[zustand]);
+                zustand = state;
+                setImage(bilder[state]);
                 break;
             }
             case 2: {
-                
-
-                setImage(bilder[zustand]);
+                if(zustand != 1){
+                    zustand = state;
+                    setImage(bilder[state]);
+                }else {
+                    setState(3);
+                    
+                    
+                   
+                }
                 break;
             }
             case 3: {
-           
+                knopf = ((getWorld()).getObjects(Knopf.class)).get(0);
+                knopf.wasbombed = true;
+                zustand = state;
+                setImage(bilder[state]);
+                
+                if (!links){
+                    knopf.punkte = knopf.punkte + 1;
+                }
+                
                 break;
             }
         }
     }
-    
+
+    public String getCords(){
+        String corx = String.valueOf(x);
+        String cory = String.valueOf(y);
+        
+        
+        
+        return corx + cory;
+            
+        
+
+        
+    }
+
     public void addToBoat(Boat b) {
-       this.boat = boat;
-       zustand = 1;
-       setImage(bilder[zustand]);
-       b.addTeil(this);
+        this.boat = boat;
+        zustand = 1;
+        setImage(bilder[zustand]);
+        b.addTeil(this);
     }
 
     public int getZustand(){
         return zustand;
     }
 }
-   
+
