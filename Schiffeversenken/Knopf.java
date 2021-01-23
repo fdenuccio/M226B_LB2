@@ -9,35 +9,48 @@ import java.util.List;
  */
 public class Knopf extends Actor
 {
-    /**
-     * Act - do whatever the Knopf wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-
+    
+    // variable storing game started state
     private boolean started;
 
+    // variable storing reference to Text
     private Text text;
 
+    // containing IP of last connected oponent
     private String oponendIP;
 
+    // containig received Coordinates
     private String receivedCord;
 
+    // is this a server 
     private boolean server;
 
+    // stored Coordinates of choosen field
     private String chosenCords/* temp zu löschen und setzten mit methode aus feld */ = "cordosXY";
 
+    // stores score
     public int punkte;
 
+    // stores reference to the last choosen kasten
     public Kaestchen lastkasten;
     
+    // was last field a hit
     public boolean wasbombed;
 
+    
+    /**
+     * Constructor for objects of class Knopf
+     */
     public Knopf() {
         started = false;
         punkte = 0;
         wasbombed = false;
     }
 
+    /**
+     * Act - do whatever the Knopf wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() 
     {
         text = ((getWorld()).getObjects(Text.class)).get(0);
@@ -85,6 +98,10 @@ public class Knopf extends Actor
         }
     }
 
+    
+    /**
+     * starts Server for next Round
+     */
     private void nextRound(){
         try{
             text.setText("starte Server");
@@ -96,6 +113,9 @@ public class Knopf extends Actor
 
     }
 
+    /**
+     * prepares first round with a inital connection with Server
+     */
     private void prepRound(){
         if(checkInput.ActasServer()){
             startServer();
@@ -116,10 +136,20 @@ public class Knopf extends Actor
         }
     }
 
+    /**
+     * sets coordinates that where bombed by enemy
+     * 
+     * @param cord  received coordinates
+     */
     public void bombCord(String cord){
         chosenCords = cord;
     }
 
+    /**
+     * applies received coordinates to field and bombs it
+     * 
+     * @param cord  receiving coordinates 
+     */
     public void setreceivedCord(String cord){
         
         text.setText("du bist dran!");
@@ -155,6 +185,9 @@ public class Knopf extends Actor
 
     }
 
+    /**
+     * stats server to receive Coordinates from opponent
+     */
     private void receiveCords(){
         try{
             receivedCord = Server.receiveSocket();
@@ -169,6 +202,9 @@ public class Knopf extends Actor
 
     }
 
+    /**
+     * starts a Socket Server
+     */
     public void startServer(){
         try{
             text.setText("starte Server");
@@ -179,6 +215,11 @@ public class Knopf extends Actor
         }
     }
 
+    /**
+     * Starts Socket and connects to a Server
+     * 
+     * @param ip IPv4 Adress of opponent
+     */
     public void startClient(String ip){
         try{
             text.setText("starte Client");

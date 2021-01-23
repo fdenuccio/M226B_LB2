@@ -31,7 +31,6 @@ public class MyWorld extends World
         Text text = new Text();
         addObject(text, 400, 80);
         
-        roundHandler rb = new roundHandler();
         
     }
     
