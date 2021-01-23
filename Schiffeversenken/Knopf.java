@@ -172,7 +172,7 @@ public class Knopf extends Actor
     public void startServer(){
         try{
             text.setText("starte Server");
-            Server.ServerSocket()/*SocketGetJSON()*/;
+            oponendIP = Server.ServerSocket()/*SocketGetJSON()*/;
         }  catch(Exception e){
             e.printStackTrace();
             System.out.println(e);
