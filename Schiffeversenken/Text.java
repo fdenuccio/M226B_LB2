@@ -31,6 +31,11 @@ public class Text extends Actor
     
     public void setText(String t){
         text = t;
+               
         setImage(new GreenfootImage(t, 60, Color.BLACK, Color.WHITE));
+        
+        if (t == "Du hast gewonnen!" || t == "Du hast gewonnen!"){
+            Greenfoot.stop();
+        }
     }
 }

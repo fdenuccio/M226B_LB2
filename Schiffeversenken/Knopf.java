@@ -59,6 +59,9 @@ public class Knopf extends Actor
 
             }else{
                 //normale runde nach start
+                
+                text.setText("warte auf Gegner...");
+                
                 try{
                     if (wasbombed)
                     {
@@ -75,6 +78,10 @@ public class Knopf extends Actor
 
             }
 
+        }
+        if (punkte == 7){
+            text.setText("du hast gewonnen");
+            
         }
     }
 
@@ -114,7 +121,9 @@ public class Knopf extends Actor
     }
 
     public void setreceivedCord(String cord){
-
+        
+        text.setText("du bist dran!");
+        
         int x = Integer.parseInt(String.valueOf(cord.charAt(0)));
         int y = Integer.parseInt(String.valueOf(cord.charAt(1)));
         int z = 0;

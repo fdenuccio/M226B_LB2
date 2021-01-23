@@ -117,6 +117,11 @@ public class Kaestchen extends Actor
                 knopf.wasbombed = true;
                 zustand = state;
                 setImage(bilder[state]);
+                
+                if (!links){
+                    knopf.punkte = knopf.punkte + 1;
+                }
+                
                 break;
             }
         }
