@@ -26,10 +26,16 @@ public class Knopf extends Actor
 
     private String chosenCords/* temp zu löschen und setzten mit methode aus feld */ = "cordosXY";
 
+    public int punkte;
+
+    public Kaestchen lastkasten;
+    
+    public boolean wasbombed;
+
     public Knopf() {
-
         started = false;
-
+        punkte = 0;
+        wasbombed = false;
     }
 
     public void act() 
@@ -54,7 +60,12 @@ public class Knopf extends Actor
             }else{
                 //normale runde nach start
                 try{
+                    if (wasbombed)
+                    {
+                        chosenCords = chosenCords + "1";
+                    }
                     Client.sendSocket(oponendIP, chosenCords);
+                    wasbombed = false;
                 } catch(Exception e){
                     e.printStackTrace();
                     System.out.println(e);
@@ -101,38 +112,39 @@ public class Knopf extends Actor
     public void bombCord(String cord){
         chosenCords = cord;
     }
-    
+
     public void setreceivedCord(String cord){
-        
+
         int x = Integer.parseInt(String.valueOf(cord.charAt(0)));
         int y = Integer.parseInt(String.valueOf(cord.charAt(1)));
-        
-        System.out.println("received x cor" + x);
-        System.out.println("received y cor" + y);
-        
-        MyWorld world = (MyWorld) getWorld();
-        
-        List<Kaestchen> kaestchen = getWorld().getObjects(Kaestchen.class);
-        
-        for (Kaestchen kasten : kaestchen){
+        int z = 0;
+        if (cord.length() == 3){
+            z = Integer.parseInt(String.valueOf(cord.charAt(2)));
+
+            System.out.println("state value: " + z);
             
+
+        }
+
+        System.out.println("received x cor: " + x);
+        System.out.println("received y cor: " + y);
+
+        MyWorld world = (MyWorld) getWorld();
+        List<Kaestchen> kaestchen = getWorld().getObjects(Kaestchen.class);
+        for (Kaestchen kasten : kaestchen){
             if (kasten.x == x && kasten.y == y && kasten.links){
+                
+                if(z == 1){
+                    lastkasten.setState(3);
+                }
                 
                 kasten.setState(2);
                 
+                //lastkasten = kasten;
             }
-            
         }
-        
-        
 
-        
-        
-        
-        
     }
-    
-    
 
     private void receiveCords(){
         try{

@@ -14,7 +14,7 @@ public class Kaestchen extends Actor
     private GreenfootImage img;
     private int zustand; // Wasser, Schiff, Treffer, Versenkt
     public boolean links;
-    
+
     private Knopf knopf;
 
     private GreenfootImage bilder[] = {new GreenfootImage("wasser (Custom).jpg"),new GreenfootImage("Kaestchen (Custom).png"), new GreenfootImage("treffer (Custom).jpg"), new GreenfootImage("versenkt (Custom).jpg")};
@@ -36,13 +36,17 @@ public class Kaestchen extends Actor
      */
     public void act() 
     {
-        
+
         knopf = ((getWorld()).getObjects(Knopf.class)).get(0);
-        
+
         if (!links){
             if (Greenfoot.mouseClicked(this)) {
                 // check if rechts
                 //fire();
+                
+                if (!links){
+                    knopf.lastkasten = this;
+                }
                 
                 setState(2);
                 
@@ -84,39 +88,51 @@ public class Kaestchen extends Actor
     }
 
     public void setState( int state){
-        
 
-        switch (zustand){
+        switch (state){
             case 0: {
-
+                zustand = state;
                 setImage(bilder[state]);
                 break;
             }
             case 1: {
-
+                zustand = state;
                 setImage(bilder[state]);
                 break;
             }
             case 2: {
-
-                setImage(bilder[state]);
+                if(zustand != 1){
+                    zustand = state;
+                    setImage(bilder[state]);
+                }else {
+                    setState(3);
+                    
+                    
+                   
+                }
                 break;
             }
             case 3: {
-
+                knopf = ((getWorld()).getObjects(Knopf.class)).get(0);
+                knopf.wasbombed = true;
+                zustand = state;
+                setImage(bilder[state]);
                 break;
             }
         }
     }
-    
+
     public String getCords(){
-          String corx = String.valueOf(x);
-          String cory = String.valueOf(y);
-          
-          
-          
-          return corx + cory;
-          
+        String corx = String.valueOf(x);
+        String cory = String.valueOf(y);
+        
+        
+        
+        return corx + cory;
+            
+        
+
+        
     }
 
     public void addToBoat(Boat b) {

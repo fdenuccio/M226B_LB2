@@ -11,6 +11,9 @@ public class MyWorld extends World
     private Kaestchen[][] feldLinks;
     private Kaestchen[][] feldRechts;
     
+    
+    
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -31,7 +34,7 @@ public class MyWorld extends World
         roundHandler rb = new roundHandler();
         
     }
-
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
