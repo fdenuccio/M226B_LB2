@@ -57,19 +57,28 @@ public class MyWorld extends World
         
         // Boat 2 füllen
         Boat boat2 = new Boat(2);
-        feldLinks[4][5].addToBoat(boat2);
-        feldLinks[4][6].addToBoat(boat2);
+        int x = Greenfoot.getRandomNumber(9);
+        int y = Greenfoot.getRandomNumber(7);
+        feldLinks[x][y].addToBoat(boat2);
+        feldLinks[x][y+1].addToBoat(boat2);
         // Boat 3 füllen
         Boat boat3 = new Boat(3);
-        feldLinks[6][7].addToBoat(boat3);
-        feldLinks[6][8].addToBoat(boat3);
-        feldLinks[6][9].addToBoat(boat3);
+        x = Greenfoot.getRandomNumber(9);
+        y = Greenfoot.getRandomNumber(7);
+        feldLinks[x][y].addToBoat(boat3);
+        feldLinks[x][y+1].addToBoat(boat3);
+        feldLinks[x][y+2].addToBoat(boat3);
         //Boat 4 füllen
         Boat boat4 = new Boat(4);
-        feldLinks[2][2].addToBoat(boat4);
-        feldLinks[2][3].addToBoat(boat4);
+        x = Greenfoot.getRandomNumber(9);
+        y = Greenfoot.getRandomNumber(7);
+        feldLinks[x][y].addToBoat(boat4);
+        feldLinks[x][y+1].addToBoat(boat4);
         
         //Doppelschleife x y;
         //feldLinks[x][y].getZustand   ---> Send to other
     }
+    
+   
+    
 }
